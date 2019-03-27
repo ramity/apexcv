@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 from difflib import SequenceMatcher
 
-class Inventory:
+class InventoryProcessor:
 
     image = None
     regionColor = (0, 0, 255)

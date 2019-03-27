@@ -1,9 +1,9 @@
 import cv2
-from inventory import Inventory
+from inventoryProcessor import InventoryProcessor
 
 image = cv2.imread("../input/weaponCaptures/alternator/alternatorSecondaryGame.JPG")
 
-inventoryProcessor = Inventory()
+inventoryProcessor = InventoryProcessor()
 inventoryProcessor.setImage(image)
 print(inventoryProcessor.isInInventoryUI())
 
