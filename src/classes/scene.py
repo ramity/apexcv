@@ -2,7 +2,7 @@ import cv2
 from frame import Frame
 
 class Scene:
-    frame
+    frame = None
     subImages = {}
     extractedData = {}
 
