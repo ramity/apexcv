@@ -1173,6 +1173,7 @@ class InventoryProcessor:
 
         if(self.confidenceLevelOutput):
             print("confidenceLevel: ", confidenceLevel)
+            print("confidenceLevelRequirement: ", self.confidenceLevelRequirement)
             print("topMenuInventoryTextSimilarity: ", topMenuInventoryTextSimilarity)
             print("topMenuSquadTextSimilarity: ", topMenuSquadTextSimilarity)
             print("topMenuLegendTextSimilarity: ", topMenuLegendTextSimilarity)
