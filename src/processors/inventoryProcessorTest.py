@@ -1,7 +1,7 @@
 import cv2
 from inventoryProcessor import InventoryProcessor
 
-image = cv2.imread("../input/weaponCaptures/alternator/alternatorSecondaryGame.JPG")
+image = cv2.imread("../input/weaponCaptures/peacekeeper/peacekeeperSecondaryInv.JPG")
 
 inventoryProcessor = InventoryProcessor()
 inventoryProcessor.setImage(image)

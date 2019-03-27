@@ -18,7 +18,7 @@ uiMapCharacterY2 = uiMapCharacterY1 + uiMapCharacterH
 uiMapCharacterLower = np.array((110, 128, 15), dtype="uint8")
 uiMapCharacterUpper = np.array((182, 194, 74), dtype="uint8")
 
-video = cv2.VideoCapture('./input/footage1.mp4')
+video = cv2.VideoCapture('./input/footage/1.mp4')
 
 frameCount = 1
 while(video.isOpened()):

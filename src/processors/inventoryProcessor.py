@@ -8,6 +8,9 @@ class InventoryProcessor:
     regionColor = (0, 0, 255)
     regionThickness = 1
 
+    confidenceLevelRequirement = 4
+    confidenceLevelOutput = True
+
     topMenuInventoryTextX1 = 704
     topMenuInventoryTextW = 123
     topMenuInventoryTextY1 = 37
@@ -40,8 +43,8 @@ class InventoryProcessor:
 
     weapon1WeaponIconX1 = 536
     weapon1WeaponIconW = 309
-    weapon1WeaponIconY1 = 205
-    weapon1WeaponIconH = 72
+    weapon1WeaponIconY1 = 200
+    weapon1WeaponIconH = 100
 
     weapon1WeaponNameX1 = 419
     weapon1WeaponNameW = 299
@@ -105,8 +108,8 @@ class InventoryProcessor:
 
     weapon2WeaponIconX1 = 1126
     weapon2WeaponIconW = 309
-    weapon2WeaponIconY1 = 205
-    weapon2WeaponIconH = 72
+    weapon2WeaponIconY1 = 200
+    weapon2WeaponIconH = 100
 
     weapon2WeaponNameX1 = 1009
     weapon2WeaponNameW = 299
@@ -273,15 +276,15 @@ class InventoryProcessor:
     backButtonKeyBindY1 = 1034
     backButtonKeyBindH = 30
 
-    backButtonTextX1 = 113
-    backButtonTextW = 52
-    backButtonTextY1 = 1037
-    backButtonTextH = 22
+    backButtonTextX1 = 112
+    backButtonTextW = 54
+    backButtonTextY1 = 1036
+    backButtonTextH = 24
 
-    gameMenuTextX1 = 1741
-    gameMenuTextW = 118
-    gameMenuTextY1 = 1037
-    gameMenuTextH = 22
+    gameMenuTextX1 = 1739
+    gameMenuTextW = 121
+    gameMenuTextY1 = 1035
+    gameMenuTextH = 25
 
     def setImage(self, image):
         self.image = image
@@ -676,36 +679,38 @@ class InventoryProcessor:
 
     def isInInventoryUI(self):
         confidenceLevel = 0
-        confidenceLevelRequirement = 4
 
-        if(self.getTopMenuInventoryTextSimilarity() >= .80):
+        topMenuInventoryTextSimilarity = self.getTopMenuInventoryTextSimilarity()
+        topMenuSquadTextSimilarity = self.getTopMenuSquadTextSimilarity()
+        topMenuLegendTextSimilarity = self.getTopMenuLegendTextSimilarity()
+        weapon1TextSimilarity = self.getWeapon1TextSimilarity()
+        weapon2TextSimilarity = self.getWeapon2TextSimilarity()
+        backButtonTextSimilarity = self.getBackButtonTextSimilarity()
+        gameMenuTextSimilarity = self.getGameMenuTextSimilarity()
+
+        if(topMenuInventoryTextSimilarity >= .80):
+            confidenceLevel += 1
+        if(topMenuSquadTextSimilarity >= .80):
+            confidenceLevel += 1
+        if(topMenuLegendTextSimilarity >= .80):
+            confidenceLevel += 1
+        if(weapon1TextSimilarity >= .80):
+            confidenceLevel += 1
+        if(weapon2TextSimilarity >= .80):
+            confidenceLevel += 1
+        if(backButtonTextSimilarity >= .80):
+            confidenceLevel += 1
+        if(gameMenuTextSimilarity >= .80):
             confidenceLevel += 1
 
-        if(self.getTopMenuSquadTextSimilarity() >= .80):
-            confidenceLevel += 1
+        if(self.confidenceLevelOutput):
+            print("confidenceLevel: ", confidenceLevel)
+            print("topMenuInventoryTextSimilarity: ", topMenuInventoryTextSimilarity)
+            print("topMenuSquadTextSimilarity: ", topMenuSquadTextSimilarity)
+            print("topMenuLegendTextSimilarity: ", topMenuLegendTextSimilarity)
+            print("weapon1TextSimilarity: ", weapon1TextSimilarity)
+            print("weapon2TextSimilarity: ", weapon2TextSimilarity)
+            print("backButtonTextSimilarity: ", backButtonTextSimilarity)
+            print("gameMenuTextSimilarity: ", gameMenuTextSimilarity)
 
-        if(self.getTopMenuLegendTextSimilarity() >= .80):
-            confidenceLevel += 1
-
-        if(self.getWeapon1TextSimilarity() >= .80):
-            confidenceLevel += 1
-
-        if(self.getWeapon2TextSimilarity() >= .80):
-            confidenceLevel += 1
-
-        if(self.getBackButtonTextSimilarity() >= .80):
-            confidenceLevel += 1
-
-        if(self.getGameMenuTextSimilarity() >= .80):
-            confidenceLevel += 1
-
-        print(confidenceLevel)
-        print(self.getTopMenuInventoryTextSimilarity())
-        print(self.getTopMenuSquadTextSimilarity())
-        print(self.getTopMenuLegendTextSimilarity())
-        print(self.getWeapon1TextSimilarity())
-        print(self.getWeapon2TextSimilarity())
-        print(self.getBackButtonTextSimilarity())
-        print(self.getGameMenuTextSimilarity())
-
-        return True if confidenceLevel >= confidenceLevelRequirement else False
+        return True if confidenceLevel >= self.confidenceLevelRequirement else False
