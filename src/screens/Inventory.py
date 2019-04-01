@@ -1,15 +1,11 @@
 import cv2
 import pytesseract
-from difflib import SequenceMatcher
+from Base import Base
 
-class InventoryProcessor:
+class Inventory(Base):
 
-    image = None
-    regionColor = (0, 0, 255)
-    regionThickness = 1
-
-    confidenceLevelRequirement = 4
-    confidenceLevelOutput = True
+    confidenceLevelRequirement = 6
+    confidenceLevelOutput = False
 
     backpackSlotEmptyTemplatePath = "../input/templates/backpackSlotEmpty.jpg"
     backpackSlotEmptyTemplate = cv2.imread(backpackSlotEmptyTemplatePath, 0)
@@ -57,8 +53,8 @@ class InventoryProcessor:
     weapon1WeaponNameY1 = 315
     weapon1WeaponNameH = 24
 
-    weapon1SkinNameX1 = 421
-    weapon1SkinNameW = 150
+    weapon1SkinNameX1 = 419
+    weapon1SkinNameW = 152
     weapon1SkinNameY1 = 342
     weapon1SkinNameH = 19
 
@@ -92,10 +88,10 @@ class InventoryProcessor:
     weapon1CurrentMagizineCountY1 = 334
     weapon1CurrentMagizineCountH = 34
 
-    weapon1AmmoTypeIconX1 = 830
-    weapon1AmmoTypeIconW = 83
-    weapon1AmmoTypeIconY1 = 372
-    weapon1AmmoTypeIconH = 82
+    weapon1AmmoTypeIconX1 = 833
+    weapon1AmmoTypeIconW = 76
+    weapon1AmmoTypeIconY1 = 376
+    weapon1AmmoTypeIconH = 73
 
     weapon2BoundingBoxX1 = 1000
     weapon2BoundingBoxW = 510
@@ -122,8 +118,8 @@ class InventoryProcessor:
     weapon2WeaponNameY1 = 315
     weapon2WeaponNameH = 24
 
-    weapon2SkinNameX1 = 1011
-    weapon2SkinNameW = 150
+    weapon2SkinNameX1 = 1009
+    weapon2SkinNameW = 152
     weapon2SkinNameY1 = 342
     weapon2SkinNameH = 19
 
@@ -157,305 +153,334 @@ class InventoryProcessor:
     weapon2CurrentMagizineCountY1 = 334
     weapon2CurrentMagizineCountH = 34
 
-    weapon2AmmoTypeIconX1 = 1420
-    weapon2AmmoTypeIconW = 83
-    weapon2AmmoTypeIconY1 = 372
-    weapon2AmmoTypeIconH = 82
+    weapon2AmmoTypeIconX1 = 1423
+    weapon2AmmoTypeIconW = 76
+    weapon2AmmoTypeIconY1 = 376
+    weapon2AmmoTypeIconH = 73
 
     backpackSlot1X1 = 614
     backpackSlot1W = 92
     backpackSlot1Y1 = 590
     backpackSlot1H = 92
 
-    backpackSlot1AmmoTypeX1 = 614
-    backpackSlot1AmmoTypeW = 92
-    backpackSlot1AmmoTypeY1 = 590
-    backpackSlot1AmmoTypeH = 58
+    backpackSlot1ItemTypeX1 = 614
+    backpackSlot1ItemTypeW = 92
+    backpackSlot1ItemTypeY1 = 590
+    backpackSlot1ItemTypeH = 58
 
-    backpackSlot1AmmoAmountX1 = 674
-    backpackSlot1AmmoAmountW = 28
-    backpackSlot1AmmoAmountY1 = 647
-    backpackSlot1AmmoAmountH = 20
+    backpackSlot1ItemAmountX1 = 674
+    backpackSlot1ItemAmountW = 28
+    backpackSlot1ItemAmountY1 = 647
+    backpackSlot1ItemAmountH = 20
 
-    backpackSlot1AmmoBarsX1 = 619
-    backpackSlot1AmmoBarsW = 81
-    backpackSlot1AmmoBarsY1 = 671
-    backpackSlot1AmmoBarsH = 5
+    backpackSlot1ItemBarsX1 = 619
+    backpackSlot1ItemBarsW = 81
+    backpackSlot1ItemBarsY1 = 671
+    backpackSlot1ItemBarsH = 5
 
     backpackSlot2X1 = 714
     backpackSlot2W = 92
     backpackSlot2Y1 = 590
     backpackSlot2H = 92
 
-    backpackSlot2AmmoTypeX1 = 714
-    backpackSlot2AmmoTypeW = 92
-    backpackSlot2AmmoTypeY1 = 590
-    backpackSlot2AmmoTypeH = 58
+    backpackSlot2ItemTypeX1 = 714
+    backpackSlot2ItemTypeW = 92
+    backpackSlot2ItemTypeY1 = 590
+    backpackSlot2ItemTypeH = 58
 
-    backpackSlot2AmmoAmountX1 = 774
-    backpackSlot2AmmoAmountW = 28
-    backpackSlot2AmmoAmountY1 = 647
-    backpackSlot2AmmoAmountH = 20
+    backpackSlot2ItemAmountX1 = 774
+    backpackSlot2ItemAmountW = 28
+    backpackSlot2ItemAmountY1 = 647
+    backpackSlot2ItemAmountH = 20
 
-    backpackSlot2AmmoBarsX1 = 719
-    backpackSlot2AmmoBarsW = 81
-    backpackSlot2AmmoBarsY1 = 671
-    backpackSlot2AmmoBarsH = 5
+    backpackSlot2ItemBarsX1 = 719
+    backpackSlot2ItemBarsW = 81
+    backpackSlot2ItemBarsY1 = 671
+    backpackSlot2ItemBarsH = 5
 
     backpackSlot3X1 = 814
     backpackSlot3W = 92
     backpackSlot3Y1 = 590
     backpackSlot3H = 92
 
-    backpackSlot3AmmoTypeX1 = 814
-    backpackSlot3AmmoTypeW = 92
-    backpackSlot3AmmoTypeY1 = 590
-    backpackSlot3AmmoTypeH = 58
+    backpackSlot3ItemTypeX1 = 814
+    backpackSlot3ItemTypeW = 92
+    backpackSlot3ItemTypeY1 = 590
+    backpackSlot3ItemTypeH = 58
 
-    backpackSlot3AmmoAmountX1 = 874
-    backpackSlot3AmmoAmountW = 28
-    backpackSlot3AmmoAmountY1 = 647
-    backpackSlot3AmmoAmountH = 20
+    backpackSlot3ItemAmountX1 = 874
+    backpackSlot3ItemAmountW = 28
+    backpackSlot3ItemAmountY1 = 647
+    backpackSlot3ItemAmountH = 20
 
-    backpackSlot3AmmoBarsX1 = 819
-    backpackSlot3AmmoBarsW = 81
-    backpackSlot3AmmoBarsY1 = 671
-    backpackSlot3AmmoBarsH = 5
+    backpackSlot3ItemBarsX1 = 819
+    backpackSlot3ItemBarsW = 81
+    backpackSlot3ItemBarsY1 = 671
+    backpackSlot3ItemBarsH = 5
 
     backpackSlot4X1 = 914
     backpackSlot4W = 92
     backpackSlot4Y1 = 590
     backpackSlot4H = 92
 
-    backpackSlot4AmmoTypeX1 = 914
-    backpackSlot4AmmoTypeW = 92
-    backpackSlot4AmmoTypeY1 = 590
-    backpackSlot4AmmoTypeH = 58
+    backpackSlot4ItemTypeX1 = 914
+    backpackSlot4ItemTypeW = 92
+    backpackSlot4ItemTypeY1 = 590
+    backpackSlot4ItemTypeH = 58
 
-    backpackSlot4AmmoAmountX1 = 974
-    backpackSlot4AmmoAmountW = 28
-    backpackSlot4AmmoAmountY1 = 647
-    backpackSlot4AmmoAmountH = 20
+    backpackSlot4ItemAmountX1 = 974
+    backpackSlot4ItemAmountW = 28
+    backpackSlot4ItemAmountY1 = 647
+    backpackSlot4ItemAmountH = 20
 
-    backpackSlot4AmmoBarsX1 = 919
-    backpackSlot4AmmoBarsW = 81
-    backpackSlot4AmmoBarsY1 = 671
-    backpackSlot4AmmoBarsH = 5
+    backpackSlot4ItemBarsX1 = 919
+    backpackSlot4ItemBarsW = 81
+    backpackSlot4ItemBarsY1 = 671
+    backpackSlot4ItemBarsH = 5
 
     backpackSlot5X1 = 1014
     backpackSlot5W = 92
     backpackSlot5Y1 = 590
     backpackSlot5H = 92
 
-    backpackSlot5AmmoTypeX1 = 1014
-    backpackSlot5AmmoTypeW = 92
-    backpackSlot5AmmoTypeY1 = 590
-    backpackSlot5AmmoTypeH = 58
+    backpackSlot5ItemTypeX1 = 1014
+    backpackSlot5ItemTypeW = 92
+    backpackSlot5ItemTypeY1 = 590
+    backpackSlot5ItemTypeH = 58
 
-    backpackSlot5AmmoAmountX1 = 1074
-    backpackSlot5AmmoAmountW = 28
-    backpackSlot5AmmoAmountY1 = 647
-    backpackSlot5AmmoAmountH = 20
+    backpackSlot5ItemAmountX1 = 1074
+    backpackSlot5ItemAmountW = 28
+    backpackSlot5ItemAmountY1 = 647
+    backpackSlot5ItemAmountH = 20
 
-    backpackSlot5AmmoBarsX1 = 1019
-    backpackSlot5AmmoBarsW = 81
-    backpackSlot5AmmoBarsY1 = 671
-    backpackSlot5AmmoBarsH = 5
+    backpackSlot5ItemBarsX1 = 1019
+    backpackSlot5ItemBarsW = 81
+    backpackSlot5ItemBarsY1 = 671
+    backpackSlot5ItemBarsH = 5
 
     backpackSlot6X1 = 1114
     backpackSlot6W = 92
     backpackSlot6Y1 = 590
     backpackSlot6H = 92
 
-    backpackSlot6AmmoTypeX1 = 1114
-    backpackSlot6AmmoTypeW = 92
-    backpackSlot6AmmoTypeY1 = 590
-    backpackSlot6AmmoTypeH = 58
+    backpackSlot6ItemTypeX1 = 1114
+    backpackSlot6ItemTypeW = 92
+    backpackSlot6ItemTypeY1 = 590
+    backpackSlot6ItemTypeH = 58
 
-    backpackSlot6AmmoAmountX1 = 1174
-    backpackSlot6AmmoAmountW = 28
-    backpackSlot6AmmoAmountY1 = 647
-    backpackSlot6AmmoAmountH = 20
+    backpackSlot6ItemAmountX1 = 1174
+    backpackSlot6ItemAmountW = 28
+    backpackSlot6ItemAmountY1 = 647
+    backpackSlot6ItemAmountH = 20
 
-    backpackSlot6AmmoBarsX1 = 1119
-    backpackSlot6AmmoBarsW = 81
-    backpackSlot6AmmoBarsY1 = 671
-    backpackSlot6AmmoBarsH = 5
+    backpackSlot6ItemBarsX1 = 1119
+    backpackSlot6ItemBarsW = 81
+    backpackSlot6ItemBarsY1 = 671
+    backpackSlot6ItemBarsH = 5
 
     backpackSlot7X1 = 1214
     backpackSlot7W = 92
     backpackSlot7Y1 = 590
     backpackSlot7H = 92
 
-    backpackSlot7AmmoTypeX1 = 1214
-    backpackSlot7AmmoTypeW = 92
-    backpackSlot7AmmoTypeY1 = 590
-    backpackSlot7AmmoTypeH = 58
+    backpackSlot7ItemTypeX1 = 1214
+    backpackSlot7ItemTypeW = 92
+    backpackSlot7ItemTypeY1 = 590
+    backpackSlot7ItemTypeH = 58
 
-    backpackSlot7AmmoAmountX1 = 1274
-    backpackSlot7AmmoAmountW = 28
-    backpackSlot7AmmoAmountY1 = 647
-    backpackSlot7AmmoAmountH = 20
+    backpackSlot7ItemAmountX1 = 1274
+    backpackSlot7ItemAmountW = 28
+    backpackSlot7ItemAmountY1 = 647
+    backpackSlot7ItemAmountH = 20
 
-    backpackSlot7AmmoBarsX1 = 1219
-    backpackSlot7AmmoBarsW = 81
-    backpackSlot7AmmoBarsY1 = 671
-    backpackSlot7AmmoBarsH = 5
+    backpackSlot7ItemBarsX1 = 1219
+    backpackSlot7ItemBarsW = 81
+    backpackSlot7ItemBarsY1 = 671
+    backpackSlot7ItemBarsH = 5
 
     backpackSlot8X1 = 614
     backpackSlot8W = 92
     backpackSlot8Y1 = 690
     backpackSlot8H = 92
 
-    backpackSlot8AmmoTypeX1 = 614
-    backpackSlot8AmmoTypeW = 92
-    backpackSlot8AmmoTypeY1 = 690
-    backpackSlot8AmmoTypeH = 58
+    backpackSlot8ItemTypeX1 = 614
+    backpackSlot8ItemTypeW = 92
+    backpackSlot8ItemTypeY1 = 690
+    backpackSlot8ItemTypeH = 58
 
-    backpackSlot8AmmoAmountX1 = 674
-    backpackSlot8AmmoAmountW = 28
-    backpackSlot8AmmoAmountY1 = 747
-    backpackSlot8AmmoAmountH = 20
+    backpackSlot8ItemAmountX1 = 674
+    backpackSlot8ItemAmountW = 28
+    backpackSlot8ItemAmountY1 = 747
+    backpackSlot8ItemAmountH = 20
 
-    backpackSlot8AmmoBarsX1 = 619
-    backpackSlot8AmmoBarsW = 81
-    backpackSlot8AmmoBarsY1 = 771
-    backpackSlot8AmmoBarsH = 5
+    backpackSlot8ItemBarsX1 = 619
+    backpackSlot8ItemBarsW = 81
+    backpackSlot8ItemBarsY1 = 771
+    backpackSlot8ItemBarsH = 5
 
     backpackSlot9X1 = 714
     backpackSlot9W = 92
     backpackSlot9Y1 = 690
     backpackSlot9H = 92
 
-    backpackSlot9AmmoTypeX1 = 714
-    backpackSlot9AmmoTypeW = 92
-    backpackSlot9AmmoTypeY1 = 690
-    backpackSlot9AmmoTypeH = 58
+    backpackSlot9ItemTypeX1 = 714
+    backpackSlot9ItemTypeW = 92
+    backpackSlot9ItemTypeY1 = 690
+    backpackSlot9ItemTypeH = 58
 
-    backpackSlot9AmmoAmountX1 = 774
-    backpackSlot9AmmoAmountW = 28
-    backpackSlot9AmmoAmountY1 = 747
-    backpackSlot9AmmoAmountH = 20
+    backpackSlot9ItemAmountX1 = 774
+    backpackSlot9ItemAmountW = 28
+    backpackSlot9ItemAmountY1 = 747
+    backpackSlot9ItemAmountH = 20
 
-    backpackSlot9AmmoBarsX1 = 719
-    backpackSlot9AmmoBarsW = 81
-    backpackSlot9AmmoBarsY1 = 771
-    backpackSlot9AmmoBarsH = 5
+    backpackSlot9ItemBarsX1 = 719
+    backpackSlot9ItemBarsW = 81
+    backpackSlot9ItemBarsY1 = 771
+    backpackSlot9ItemBarsH = 5
 
     backpackSlot10X1 = 814
     backpackSlot10W = 92
     backpackSlot10Y1 = 690
     backpackSlot10H = 92
 
-    backpackSlot10AmmoTypeX1 = 814
-    backpackSlot10AmmoTypeW = 92
-    backpackSlot10AmmoTypeY1 = 690
-    backpackSlot10AmmoTypeH = 58
+    backpackSlot10ItemTypeX1 = 814
+    backpackSlot10ItemTypeW = 92
+    backpackSlot10ItemTypeY1 = 690
+    backpackSlot10ItemTypeH = 58
 
-    backpackSlot10AmmoAmountX1 = 874
-    backpackSlot10AmmoAmountW = 28
-    backpackSlot10AmmoAmountY1 = 747
-    backpackSlot10AmmoAmountH = 20
+    backpackSlot10ItemAmountX1 = 874
+    backpackSlot10ItemAmountW = 28
+    backpackSlot10ItemAmountY1 = 747
+    backpackSlot10ItemAmountH = 20
 
-    backpackSlot10AmmoBarsX1 = 819
-    backpackSlot10AmmoBarsW = 81
-    backpackSlot10AmmoBarsY1 = 771
-    backpackSlot10AmmoBarsH = 5
+    backpackSlot10ItemBarsX1 = 819
+    backpackSlot10ItemBarsW = 81
+    backpackSlot10ItemBarsY1 = 771
+    backpackSlot10ItemBarsH = 5
 
     backpackSlot11X1 = 914
     backpackSlot11W = 92
     backpackSlot11Y1 = 690
     backpackSlot11H = 92
 
-    backpackSlot11AmmoTypeX1 = 914
-    backpackSlot11AmmoTypeW = 92
-    backpackSlot11AmmoTypeY1 = 690
-    backpackSlot11AmmoTypeH = 58
+    backpackSlot11ItemTypeX1 = 914
+    backpackSlot11ItemTypeW = 92
+    backpackSlot11ItemTypeY1 = 690
+    backpackSlot11ItemTypeH = 58
 
-    backpackSlot11AmmoAmountX1 = 974
-    backpackSlot11AmmoAmountW = 28
-    backpackSlot11AmmoAmountY1 = 747
-    backpackSlot11AmmoAmountH = 20
+    backpackSlot11ItemAmountX1 = 974
+    backpackSlot11ItemAmountW = 28
+    backpackSlot11ItemAmountY1 = 747
+    backpackSlot11ItemAmountH = 20
 
-    backpackSlot11AmmoBarsX1 = 919
-    backpackSlot11AmmoBarsW = 81
-    backpackSlot11AmmoBarsY1 = 771
-    backpackSlot11AmmoBarsH = 5
+    backpackSlot11ItemBarsX1 = 919
+    backpackSlot11ItemBarsW = 81
+    backpackSlot11ItemBarsY1 = 771
+    backpackSlot11ItemBarsH = 5
 
     backpackSlot12X1 = 1014
     backpackSlot12W = 92
     backpackSlot12Y1 = 690
     backpackSlot12H = 92
 
-    backpackSlot12AmmoTypeX1 = 1014
-    backpackSlot12AmmoTypeW = 92
-    backpackSlot12AmmoTypeY1 = 690
-    backpackSlot12AmmoTypeH = 58
+    backpackSlot12ItemTypeX1 = 1014
+    backpackSlot12ItemTypeW = 92
+    backpackSlot12ItemTypeY1 = 690
+    backpackSlot12ItemTypeH = 58
 
-    backpackSlot12AmmoAmountX1 = 1074
-    backpackSlot12AmmoAmountW = 28
-    backpackSlot12AmmoAmountY1 = 747
-    backpackSlot12AmmoAmountH = 20
+    backpackSlot12ItemAmountX1 = 1074
+    backpackSlot12ItemAmountW = 28
+    backpackSlot12ItemAmountY1 = 747
+    backpackSlot12ItemAmountH = 20
 
-    backpackSlot12AmmoBarsX1 = 1019
-    backpackSlot12AmmoBarsW = 81
-    backpackSlot12AmmoBarsY1 = 771
-    backpackSlot12AmmoBarsH = 5
+    backpackSlot12ItemBarsX1 = 1019
+    backpackSlot12ItemBarsW = 81
+    backpackSlot12ItemBarsY1 = 771
+    backpackSlot12ItemBarsH = 5
 
     backpackSlot13X1 = 1114
     backpackSlot13W = 92
     backpackSlot13Y1 = 690
     backpackSlot13H = 92
 
-    backpackSlot13AmmoTypeX1 = 1114
-    backpackSlot13AmmoTypeW = 92
-    backpackSlot13AmmoTypeY1 = 690
-    backpackSlot13AmmoTypeH = 58
+    backpackSlot13ItemTypeX1 = 1114
+    backpackSlot13ItemTypeW = 92
+    backpackSlot13ItemTypeY1 = 690
+    backpackSlot13ItemTypeH = 58
 
-    backpackSlot13AmmoAmountX1 = 1174
-    backpackSlot13AmmoAmountW = 28
-    backpackSlot13AmmoAmountY1 = 747
-    backpackSlot13AmmoAmountH = 20
+    backpackSlot13ItemAmountX1 = 1174
+    backpackSlot13ItemAmountW = 28
+    backpackSlot13ItemAmountY1 = 747
+    backpackSlot13ItemAmountH = 20
 
-    backpackSlot13AmmoBarsX1 = 1119
-    backpackSlot13AmmoBarsW = 81
-    backpackSlot13AmmoBarsY1 = 771
-    backpackSlot13AmmoBarsH = 5
+    backpackSlot13ItemBarsX1 = 1119
+    backpackSlot13ItemBarsW = 81
+    backpackSlot13ItemBarsY1 = 771
+    backpackSlot13ItemBarsH = 5
 
     backpackSlot14X1 = 1214
     backpackSlot14W = 92
     backpackSlot14Y1 = 690
     backpackSlot14H = 92
 
-    backpackSlot14AmmoTypeX1 = 1214
-    backpackSlot14AmmoTypeW = 92
-    backpackSlot14AmmoTypeY1 = 690
-    backpackSlot14AmmoTypeH = 58
+    backpackSlot14ItemTypeX1 = 1214
+    backpackSlot14ItemTypeW = 92
+    backpackSlot14ItemTypeY1 = 690
+    backpackSlot14ItemTypeH = 58
 
-    backpackSlot14AmmoAmountX1 = 1274
-    backpackSlot14AmmoAmountW = 28
-    backpackSlot14AmmoAmountY1 = 747
-    backpackSlot14AmmoAmountH = 20
+    backpackSlot14ItemAmountX1 = 1274
+    backpackSlot14ItemAmountW = 28
+    backpackSlot14ItemAmountY1 = 747
+    backpackSlot14ItemAmountH = 20
 
-    backpackSlot14AmmoBarsX1 = 1219
-    backpackSlot14AmmoBarsW = 81
-    backpackSlot14AmmoBarsY1 = 771
-    backpackSlot14AmmoBarsH = 5
+    backpackSlot14ItemBarsX1 = 1219
+    backpackSlot14ItemBarsW = 81
+    backpackSlot14ItemBarsY1 = 771
+    backpackSlot14ItemBarsH = 5
 
-    bannerBoundingBoxX1 = 45
-    bannerBoundingBoxW = 470
-    bannerBoundingBoxY1 = 835
-    bannerBoundingBoxH = 97
+    teammate1BannerBoundingBoxX1 = 46
+    teammate1BannerBoundingBoxW = 415
+    teammate1BannerBoundingBoxY1 = 678
+    teammate1BannerBoundingBoxH = 50
 
-    legendIconX1 = 89
-    legendIconW = 95
+    teammate1LegendIconX1 = 75
+    teammate1LegendIconW = 45
+    teammate1LegendIconY1 = 680
+    teammate1LegendIconH = 45
+
+    # teammate1 stuff goes here
+
+    teammate2BannerBoundingBoxX1 = 46
+    teammate2BannerBoundingBoxW = 415
+    teammate2BannerBoundingBoxY1 = 738
+    teammate2BannerBoundingBoxH = 50
+
+    teammate2LegendIconX1 = 75
+    teammate2LegendIconW = 45
+    teammate2LegendIconY1 = 740
+    teammate2LegendIconH = 45
+
+    # teammate2 stuff goes here
+
+    bannerBoundingBoxX1 = 46
+    bannerBoundingBoxW = 468
+    bannerBoundingBoxY1 = 838
+    bannerBoundingBoxH = 91
+
+    legendIconX1 = 104
+    legendIconW = 86
     legendIconY1 = 840
     legendIconH = 86
 
     usernameX1 = 198
-    usernameW = 121
-    usernameY1 = 853
-    usernameH = 26
+    usernameW = 232
+    usernameY1 = 850
+    usernameH = 29
+
+    shieldBarX1 = 199
+    shieldBarW = 232
+    shieldBarY1 = 889
+    shieldBarH = 8
 
     healthBarX1 = 199
     healthBarW = 240
@@ -487,6 +512,11 @@ class InventoryProcessor:
     abilityIconY1 = 780
     abilityIconH = 154
 
+    abilityPercentTextX1 = 1452
+    abilityPercentTextW = 48
+    abilityPercentTextY1 = 941
+    abilityPercentTextH = 27
+
     backButtonKeyBindX1 = 62
     backButtonKeyBindW = 48
     backButtonKeyBindY1 = 1034
@@ -502,12 +532,6 @@ class InventoryProcessor:
     gameMenuTextY1 = 1035
     gameMenuTextH = 25
 
-    def setImage(self, image):
-        self.image = image
-
-    def getImage(self):
-        return self.image
-
     def drawRegions(self):
         self.drawRegionTopMenuInventoryText()
         self.drawRegionTopMenuSquadText()
@@ -515,6 +539,7 @@ class InventoryProcessor:
         self.drawRegionWeapon1BoundingBox()
         self.drawRegionWeapon1KeyBindIcon()
         self.drawRegionWeapon1Text()
+        self.drawRegionWeapon1WeaponIcon()
         self.drawRegionWeapon1WeaponName()
         self.drawRegionWeapon1SkinName()
         self.drawRegionWeapon1ModSlot1()
@@ -538,70 +563,72 @@ class InventoryProcessor:
         self.drawRegionWeapon2CurrentMagizineCount()
         self.drawRegionWeapon2AmmoTypeIcon()
         self.drawRegionBackpackSlot1()
-        #self.drawRegionBackpackSlot1AmmoType()
-        self.drawRegionBackpackSlot1AmmoAmount()
-        self.drawRegionBackpackSlot1AmmoBars()
+        #self.drawRegionBackpackSlot1ItemType()
+        self.drawRegionBackpackSlot1ItemAmount()
+        self.drawRegionBackpackSlot1ItemBars()
         self.drawRegionBackpackSlot2()
-        self.drawRegionBackpackSlot2AmmoType()
-        self.drawRegionBackpackSlot2AmmoAmount()
-        self.drawRegionBackpackSlot2AmmoBars()
+        self.drawRegionBackpackSlot2ItemType()
+        self.drawRegionBackpackSlot2ItemAmount()
+        self.drawRegionBackpackSlot2ItemBars()
         self.drawRegionBackpackSlot3()
-        self.drawRegionBackpackSlot3AmmoType()
-        self.drawRegionBackpackSlot3AmmoAmount()
-        self.drawRegionBackpackSlot3AmmoBars()
+        self.drawRegionBackpackSlot3ItemType()
+        self.drawRegionBackpackSlot3ItemAmount()
+        self.drawRegionBackpackSlot3ItemBars()
         self.drawRegionBackpackSlot4()
-        self.drawRegionBackpackSlot4AmmoType()
-        self.drawRegionBackpackSlot4AmmoAmount()
-        self.drawRegionBackpackSlot4AmmoBars()
+        self.drawRegionBackpackSlot4ItemType()
+        self.drawRegionBackpackSlot4ItemAmount()
+        self.drawRegionBackpackSlot4ItemBars()
         self.drawRegionBackpackSlot5()
-        self.drawRegionBackpackSlot5AmmoType()
-        self.drawRegionBackpackSlot5AmmoAmount()
-        self.drawRegionBackpackSlot5AmmoBars()
+        self.drawRegionBackpackSlot5ItemType()
+        self.drawRegionBackpackSlot5ItemAmount()
+        self.drawRegionBackpackSlot5ItemBars()
         self.drawRegionBackpackSlot6()
-        self.drawRegionBackpackSlot6AmmoType()
-        self.drawRegionBackpackSlot6AmmoAmount()
-        self.drawRegionBackpackSlot6AmmoBars()
+        self.drawRegionBackpackSlot6ItemType()
+        self.drawRegionBackpackSlot6ItemAmount()
+        self.drawRegionBackpackSlot6ItemBars()
         self.drawRegionBackpackSlot7()
-        self.drawRegionBackpackSlot7AmmoType()
-        self.drawRegionBackpackSlot7AmmoAmount()
-        self.drawRegionBackpackSlot7AmmoBars()
+        self.drawRegionBackpackSlot7ItemType()
+        self.drawRegionBackpackSlot7ItemAmount()
+        self.drawRegionBackpackSlot7ItemBars()
         self.drawRegionBackpackSlot8()
-        self.drawRegionBackpackSlot8AmmoType()
-        self.drawRegionBackpackSlot8AmmoAmount()
-        self.drawRegionBackpackSlot8AmmoBars()
+        self.drawRegionBackpackSlot8ItemType()
+        self.drawRegionBackpackSlot8ItemAmount()
+        self.drawRegionBackpackSlot8ItemBars()
         self.drawRegionBackpackSlot9()
-        self.drawRegionBackpackSlot9AmmoType()
-        self.drawRegionBackpackSlot9AmmoAmount()
-        self.drawRegionBackpackSlot9AmmoBars()
+        self.drawRegionBackpackSlot9ItemType()
+        self.drawRegionBackpackSlot9ItemAmount()
+        self.drawRegionBackpackSlot9ItemBars()
         self.drawRegionBackpackSlot10()
-        self.drawRegionBackpackSlot10AmmoType()
-        self.drawRegionBackpackSlot10AmmoAmount()
-        self.drawRegionBackpackSlot10AmmoBars()
+        self.drawRegionBackpackSlot10ItemType()
+        self.drawRegionBackpackSlot10ItemAmount()
+        self.drawRegionBackpackSlot10ItemBars()
         self.drawRegionBackpackSlot11()
-        self.drawRegionBackpackSlot11AmmoType()
-        self.drawRegionBackpackSlot11AmmoAmount()
-        self.drawRegionBackpackSlot11AmmoBars()
+        self.drawRegionBackpackSlot11ItemType()
+        self.drawRegionBackpackSlot11ItemAmount()
+        self.drawRegionBackpackSlot11ItemBars()
         self.drawRegionBackpackSlot12()
-        self.drawRegionBackpackSlot12AmmoType()
-        self.drawRegionBackpackSlot12AmmoAmount()
-        self.drawRegionBackpackSlot12AmmoBars()
+        self.drawRegionBackpackSlot12ItemType()
+        self.drawRegionBackpackSlot12ItemAmount()
+        self.drawRegionBackpackSlot12ItemBars()
         self.drawRegionBackpackSlot13()
-        self.drawRegionBackpackSlot13AmmoType()
-        self.drawRegionBackpackSlot13AmmoAmount()
-        self.drawRegionBackpackSlot13AmmoBars()
+        self.drawRegionBackpackSlot13ItemType()
+        self.drawRegionBackpackSlot13ItemAmount()
+        self.drawRegionBackpackSlot13ItemBars()
         self.drawRegionBackpackSlot14()
-        self.drawRegionBackpackSlot14AmmoType()
-        self.drawRegionBackpackSlot14AmmoAmount()
-        self.drawRegionBackpackSlot14AmmoBars()
+        self.drawRegionBackpackSlot14ItemType()
+        self.drawRegionBackpackSlot14ItemAmount()
+        self.drawRegionBackpackSlot14ItemBars()
         self.drawRegionBannerBoundingBox()
         self.drawRegionLegendIcon()
         self.drawRegionUsername()
+        self.drawRegionShieldBar()
         self.drawRegionHealthBar()
         self.drawRegionHelmetSlot()
         self.drawRegionArmorSlot()
         self.drawRegionKnockdownSlot()
         self.drawRegionBackpackSlot()
         self.drawRegionAbilityIcon()
+        self.drawRegionAbilityPercentText()
         self.drawRegionBackButtonKeyBind()
         self.drawRegionBackButtonText()
         self.drawRegionGameMenuText()
@@ -634,6 +661,11 @@ class InventoryProcessor:
     def drawRegionWeapon1Text(self):
         pointA = (self.weapon1TextX1, self.weapon1TextY1)
         pointB = (pointA[0] + self.weapon1TextW, pointA[1] + self.weapon1TextH)
+        cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
+
+    def drawRegionWeapon1WeaponIcon(self):
+        pointA = (self.weapon1WeaponIconX1, self.weapon1WeaponIconY1)
+        pointB = (pointA[0] + self.weapon1WeaponIconW, pointA[1] + self.weapon1WeaponIconH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionWeapon1WeaponName(self):
@@ -751,19 +783,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot1W, pointA[1] + self.backpackSlot1H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot1AmmoType(self):
-        pointA = (self.backpackSlot1AmmoTypeX1, self.backpackSlot1AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot1AmmoTypeW, pointA[1] + self.backpackSlot1AmmoTypeH)
+    def drawRegionBackpackSlot1ItemType(self):
+        pointA = (self.backpackSlot1ItemTypeX1, self.backpackSlot1ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot1ItemTypeW, pointA[1] + self.backpackSlot1ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot1AmmoAmount(self):
-        pointA = (self.backpackSlot1AmmoAmountX1, self.backpackSlot1AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot1AmmoAmountW, pointA[1] + self.backpackSlot1AmmoAmountH)
+    def drawRegionBackpackSlot1ItemAmount(self):
+        pointA = (self.backpackSlot1ItemAmountX1, self.backpackSlot1ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot1ItemAmountW, pointA[1] + self.backpackSlot1ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot1AmmoBars(self):
-        pointA = (self.backpackSlot1AmmoBarsX1, self.backpackSlot1AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot1AmmoBarsW, pointA[1] + self.backpackSlot1AmmoBarsH)
+    def drawRegionBackpackSlot1ItemBars(self):
+        pointA = (self.backpackSlot1ItemBarsX1, self.backpackSlot1ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot1ItemBarsW, pointA[1] + self.backpackSlot1ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot2(self):
@@ -771,19 +803,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot2W, pointA[1] + self.backpackSlot2H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot2AmmoType(self):
-        pointA = (self.backpackSlot2AmmoTypeX1, self.backpackSlot2AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot2AmmoTypeW, pointA[1] + self.backpackSlot2AmmoTypeH)
+    def drawRegionBackpackSlot2ItemType(self):
+        pointA = (self.backpackSlot2ItemTypeX1, self.backpackSlot2ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot2ItemTypeW, pointA[1] + self.backpackSlot2ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot2AmmoAmount(self):
-        pointA = (self.backpackSlot2AmmoAmountX1, self.backpackSlot2AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot2AmmoAmountW, pointA[1] + self.backpackSlot2AmmoAmountH)
+    def drawRegionBackpackSlot2ItemAmount(self):
+        pointA = (self.backpackSlot2ItemAmountX1, self.backpackSlot2ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot2ItemAmountW, pointA[1] + self.backpackSlot2ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot2AmmoBars(self):
-        pointA = (self.backpackSlot2AmmoBarsX1, self.backpackSlot2AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot2AmmoBarsW, pointA[1] + self.backpackSlot2AmmoBarsH)
+    def drawRegionBackpackSlot2ItemBars(self):
+        pointA = (self.backpackSlot2ItemBarsX1, self.backpackSlot2ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot2ItemBarsW, pointA[1] + self.backpackSlot2ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot3(self):
@@ -791,19 +823,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot3W, pointA[1] + self.backpackSlot3H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot3AmmoType(self):
-        pointA = (self.backpackSlot3AmmoTypeX1, self.backpackSlot3AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot3AmmoTypeW, pointA[1] + self.backpackSlot3AmmoTypeH)
+    def drawRegionBackpackSlot3ItemType(self):
+        pointA = (self.backpackSlot3ItemTypeX1, self.backpackSlot3ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot3ItemTypeW, pointA[1] + self.backpackSlot3ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot3AmmoAmount(self):
-        pointA = (self.backpackSlot3AmmoAmountX1, self.backpackSlot3AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot3AmmoAmountW, pointA[1] + self.backpackSlot3AmmoAmountH)
+    def drawRegionBackpackSlot3ItemAmount(self):
+        pointA = (self.backpackSlot3ItemAmountX1, self.backpackSlot3ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot3ItemAmountW, pointA[1] + self.backpackSlot3ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot3AmmoBars(self):
-        pointA = (self.backpackSlot3AmmoBarsX1, self.backpackSlot3AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot3AmmoBarsW, pointA[1] + self.backpackSlot3AmmoBarsH)
+    def drawRegionBackpackSlot3ItemBars(self):
+        pointA = (self.backpackSlot3ItemBarsX1, self.backpackSlot3ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot3ItemBarsW, pointA[1] + self.backpackSlot3ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot4(self):
@@ -811,19 +843,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot4W, pointA[1] + self.backpackSlot4H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot4AmmoType(self):
-        pointA = (self.backpackSlot4AmmoTypeX1, self.backpackSlot4AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot4AmmoTypeW, pointA[1] + self.backpackSlot4AmmoTypeH)
+    def drawRegionBackpackSlot4ItemType(self):
+        pointA = (self.backpackSlot4ItemTypeX1, self.backpackSlot4ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot4ItemTypeW, pointA[1] + self.backpackSlot4ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot4AmmoAmount(self):
-        pointA = (self.backpackSlot4AmmoAmountX1, self.backpackSlot4AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot4AmmoAmountW, pointA[1] + self.backpackSlot4AmmoAmountH)
+    def drawRegionBackpackSlot4ItemAmount(self):
+        pointA = (self.backpackSlot4ItemAmountX1, self.backpackSlot4ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot4ItemAmountW, pointA[1] + self.backpackSlot4ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot4AmmoBars(self):
-        pointA = (self.backpackSlot4AmmoBarsX1, self.backpackSlot4AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot4AmmoBarsW, pointA[1] + self.backpackSlot4AmmoBarsH)
+    def drawRegionBackpackSlot4ItemBars(self):
+        pointA = (self.backpackSlot4ItemBarsX1, self.backpackSlot4ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot4ItemBarsW, pointA[1] + self.backpackSlot4ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot5(self):
@@ -831,19 +863,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot5W, pointA[1] + self.backpackSlot5H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot5AmmoType(self):
-        pointA = (self.backpackSlot5AmmoTypeX1, self.backpackSlot5AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot5AmmoTypeW, pointA[1] + self.backpackSlot5AmmoTypeH)
+    def drawRegionBackpackSlot5ItemType(self):
+        pointA = (self.backpackSlot5ItemTypeX1, self.backpackSlot5ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot5ItemTypeW, pointA[1] + self.backpackSlot5ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot5AmmoAmount(self):
-        pointA = (self.backpackSlot5AmmoAmountX1, self.backpackSlot5AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot5AmmoAmountW, pointA[1] + self.backpackSlot5AmmoAmountH)
+    def drawRegionBackpackSlot5ItemAmount(self):
+        pointA = (self.backpackSlot5ItemAmountX1, self.backpackSlot5ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot5ItemAmountW, pointA[1] + self.backpackSlot5ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot5AmmoBars(self):
-        pointA = (self.backpackSlot5AmmoBarsX1, self.backpackSlot5AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot5AmmoBarsW, pointA[1] + self.backpackSlot5AmmoBarsH)
+    def drawRegionBackpackSlot5ItemBars(self):
+        pointA = (self.backpackSlot5ItemBarsX1, self.backpackSlot5ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot5ItemBarsW, pointA[1] + self.backpackSlot5ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot6(self):
@@ -851,19 +883,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot6W, pointA[1] + self.backpackSlot6H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot6AmmoType(self):
-        pointA = (self.backpackSlot6AmmoTypeX1, self.backpackSlot6AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot6AmmoTypeW, pointA[1] + self.backpackSlot6AmmoTypeH)
+    def drawRegionBackpackSlot6ItemType(self):
+        pointA = (self.backpackSlot6ItemTypeX1, self.backpackSlot6ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot6ItemTypeW, pointA[1] + self.backpackSlot6ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot6AmmoAmount(self):
-        pointA = (self.backpackSlot6AmmoAmountX1, self.backpackSlot6AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot6AmmoAmountW, pointA[1] + self.backpackSlot6AmmoAmountH)
+    def drawRegionBackpackSlot6ItemAmount(self):
+        pointA = (self.backpackSlot6ItemAmountX1, self.backpackSlot6ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot6ItemAmountW, pointA[1] + self.backpackSlot6ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot6AmmoBars(self):
-        pointA = (self.backpackSlot6AmmoBarsX1, self.backpackSlot6AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot6AmmoBarsW, pointA[1] + self.backpackSlot6AmmoBarsH)
+    def drawRegionBackpackSlot6ItemBars(self):
+        pointA = (self.backpackSlot6ItemBarsX1, self.backpackSlot6ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot6ItemBarsW, pointA[1] + self.backpackSlot6ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot7(self):
@@ -871,19 +903,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot7W, pointA[1] + self.backpackSlot7H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot7AmmoType(self):
-        pointA = (self.backpackSlot7AmmoTypeX1, self.backpackSlot7AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot7AmmoTypeW, pointA[1] + self.backpackSlot7AmmoTypeH)
+    def drawRegionBackpackSlot7ItemType(self):
+        pointA = (self.backpackSlot7ItemTypeX1, self.backpackSlot7ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot7ItemTypeW, pointA[1] + self.backpackSlot7ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot7AmmoAmount(self):
-        pointA = (self.backpackSlot7AmmoAmountX1, self.backpackSlot7AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot7AmmoAmountW, pointA[1] + self.backpackSlot7AmmoAmountH)
+    def drawRegionBackpackSlot7ItemAmount(self):
+        pointA = (self.backpackSlot7ItemAmountX1, self.backpackSlot7ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot7ItemAmountW, pointA[1] + self.backpackSlot7ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot7AmmoBars(self):
-        pointA = (self.backpackSlot7AmmoBarsX1, self.backpackSlot7AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot7AmmoBarsW, pointA[1] + self.backpackSlot7AmmoBarsH)
+    def drawRegionBackpackSlot7ItemBars(self):
+        pointA = (self.backpackSlot7ItemBarsX1, self.backpackSlot7ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot7ItemBarsW, pointA[1] + self.backpackSlot7ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot8(self):
@@ -891,19 +923,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot8W, pointA[1] + self.backpackSlot8H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot8AmmoType(self):
-        pointA = (self.backpackSlot8AmmoTypeX1, self.backpackSlot8AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot8AmmoTypeW, pointA[1] + self.backpackSlot8AmmoTypeH)
+    def drawRegionBackpackSlot8ItemType(self):
+        pointA = (self.backpackSlot8ItemTypeX1, self.backpackSlot8ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot8ItemTypeW, pointA[1] + self.backpackSlot8ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot8AmmoAmount(self):
-        pointA = (self.backpackSlot8AmmoAmountX1, self.backpackSlot8AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot8AmmoAmountW, pointA[1] + self.backpackSlot8AmmoAmountH)
+    def drawRegionBackpackSlot8ItemAmount(self):
+        pointA = (self.backpackSlot8ItemAmountX1, self.backpackSlot8ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot8ItemAmountW, pointA[1] + self.backpackSlot8ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot8AmmoBars(self):
-        pointA = (self.backpackSlot8AmmoBarsX1, self.backpackSlot8AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot8AmmoBarsW, pointA[1] + self.backpackSlot8AmmoBarsH)
+    def drawRegionBackpackSlot8ItemBars(self):
+        pointA = (self.backpackSlot8ItemBarsX1, self.backpackSlot8ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot8ItemBarsW, pointA[1] + self.backpackSlot8ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot9(self):
@@ -911,19 +943,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot9W, pointA[1] + self.backpackSlot9H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot9AmmoType(self):
-        pointA = (self.backpackSlot9AmmoTypeX1, self.backpackSlot9AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot9AmmoTypeW, pointA[1] + self.backpackSlot9AmmoTypeH)
+    def drawRegionBackpackSlot9ItemType(self):
+        pointA = (self.backpackSlot9ItemTypeX1, self.backpackSlot9ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot9ItemTypeW, pointA[1] + self.backpackSlot9ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot9AmmoAmount(self):
-        pointA = (self.backpackSlot9AmmoAmountX1, self.backpackSlot9AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot9AmmoAmountW, pointA[1] + self.backpackSlot9AmmoAmountH)
+    def drawRegionBackpackSlot9ItemAmount(self):
+        pointA = (self.backpackSlot9ItemAmountX1, self.backpackSlot9ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot9ItemAmountW, pointA[1] + self.backpackSlot9ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot9AmmoBars(self):
-        pointA = (self.backpackSlot9AmmoBarsX1, self.backpackSlot9AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot9AmmoBarsW, pointA[1] + self.backpackSlot9AmmoBarsH)
+    def drawRegionBackpackSlot9ItemBars(self):
+        pointA = (self.backpackSlot9ItemBarsX1, self.backpackSlot9ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot9ItemBarsW, pointA[1] + self.backpackSlot9ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot10(self):
@@ -931,19 +963,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot10W, pointA[1] + self.backpackSlot10H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot10AmmoType(self):
-        pointA = (self.backpackSlot10AmmoTypeX1, self.backpackSlot10AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot10AmmoTypeW, pointA[1] + self.backpackSlot10AmmoTypeH)
+    def drawRegionBackpackSlot10ItemType(self):
+        pointA = (self.backpackSlot10ItemTypeX1, self.backpackSlot10ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot10ItemTypeW, pointA[1] + self.backpackSlot10ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot10AmmoAmount(self):
-        pointA = (self.backpackSlot10AmmoAmountX1, self.backpackSlot10AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot10AmmoAmountW, pointA[1] + self.backpackSlot10AmmoAmountH)
+    def drawRegionBackpackSlot10ItemAmount(self):
+        pointA = (self.backpackSlot10ItemAmountX1, self.backpackSlot10ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot10ItemAmountW, pointA[1] + self.backpackSlot10ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot10AmmoBars(self):
-        pointA = (self.backpackSlot10AmmoBarsX1, self.backpackSlot10AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot10AmmoBarsW, pointA[1] + self.backpackSlot10AmmoBarsH)
+    def drawRegionBackpackSlot10ItemBars(self):
+        pointA = (self.backpackSlot10ItemBarsX1, self.backpackSlot10ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot10ItemBarsW, pointA[1] + self.backpackSlot10ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot11(self):
@@ -951,19 +983,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot11W, pointA[1] + self.backpackSlot11H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot11AmmoType(self):
-        pointA = (self.backpackSlot11AmmoTypeX1, self.backpackSlot11AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot11AmmoTypeW, pointA[1] + self.backpackSlot11AmmoTypeH)
+    def drawRegionBackpackSlot11ItemType(self):
+        pointA = (self.backpackSlot11ItemTypeX1, self.backpackSlot11ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot11ItemTypeW, pointA[1] + self.backpackSlot11ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot11AmmoAmount(self):
-        pointA = (self.backpackSlot11AmmoAmountX1, self.backpackSlot11AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot11AmmoAmountW, pointA[1] + self.backpackSlot11AmmoAmountH)
+    def drawRegionBackpackSlot11ItemAmount(self):
+        pointA = (self.backpackSlot11ItemAmountX1, self.backpackSlot11ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot11ItemAmountW, pointA[1] + self.backpackSlot11ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot11AmmoBars(self):
-        pointA = (self.backpackSlot11AmmoBarsX1, self.backpackSlot11AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot11AmmoBarsW, pointA[1] + self.backpackSlot11AmmoBarsH)
+    def drawRegionBackpackSlot11ItemBars(self):
+        pointA = (self.backpackSlot11ItemBarsX1, self.backpackSlot11ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot11ItemBarsW, pointA[1] + self.backpackSlot11ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot12(self):
@@ -971,19 +1003,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot12W, pointA[1] + self.backpackSlot12H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot12AmmoType(self):
-        pointA = (self.backpackSlot12AmmoTypeX1, self.backpackSlot12AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot12AmmoTypeW, pointA[1] + self.backpackSlot12AmmoTypeH)
+    def drawRegionBackpackSlot12ItemType(self):
+        pointA = (self.backpackSlot12ItemTypeX1, self.backpackSlot12ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot12ItemTypeW, pointA[1] + self.backpackSlot12ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot12AmmoAmount(self):
-        pointA = (self.backpackSlot12AmmoAmountX1, self.backpackSlot12AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot12AmmoAmountW, pointA[1] + self.backpackSlot12AmmoAmountH)
+    def drawRegionBackpackSlot12ItemAmount(self):
+        pointA = (self.backpackSlot12ItemAmountX1, self.backpackSlot12ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot12ItemAmountW, pointA[1] + self.backpackSlot12ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot12AmmoBars(self):
-        pointA = (self.backpackSlot12AmmoBarsX1, self.backpackSlot12AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot12AmmoBarsW, pointA[1] + self.backpackSlot12AmmoBarsH)
+    def drawRegionBackpackSlot12ItemBars(self):
+        pointA = (self.backpackSlot12ItemBarsX1, self.backpackSlot12ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot12ItemBarsW, pointA[1] + self.backpackSlot12ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot13(self):
@@ -991,19 +1023,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot13W, pointA[1] + self.backpackSlot13H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot13AmmoType(self):
-        pointA = (self.backpackSlot13AmmoTypeX1, self.backpackSlot13AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot13AmmoTypeW, pointA[1] + self.backpackSlot13AmmoTypeH)
+    def drawRegionBackpackSlot13ItemType(self):
+        pointA = (self.backpackSlot13ItemTypeX1, self.backpackSlot13ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot13ItemTypeW, pointA[1] + self.backpackSlot13ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot13AmmoAmount(self):
-        pointA = (self.backpackSlot13AmmoAmountX1, self.backpackSlot13AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot13AmmoAmountW, pointA[1] + self.backpackSlot13AmmoAmountH)
+    def drawRegionBackpackSlot13ItemAmount(self):
+        pointA = (self.backpackSlot13ItemAmountX1, self.backpackSlot13ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot13ItemAmountW, pointA[1] + self.backpackSlot13ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot13AmmoBars(self):
-        pointA = (self.backpackSlot13AmmoBarsX1, self.backpackSlot13AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot13AmmoBarsW, pointA[1] + self.backpackSlot13AmmoBarsH)
+    def drawRegionBackpackSlot13ItemBars(self):
+        pointA = (self.backpackSlot13ItemBarsX1, self.backpackSlot13ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot13ItemBarsW, pointA[1] + self.backpackSlot13ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBackpackSlot14(self):
@@ -1011,19 +1043,19 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.backpackSlot14W, pointA[1] + self.backpackSlot14H)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot14AmmoType(self):
-        pointA = (self.backpackSlot14AmmoTypeX1, self.backpackSlot14AmmoTypeY1)
-        pointB = (pointA[0] + self.backpackSlot14AmmoTypeW, pointA[1] + self.backpackSlot14AmmoTypeH)
+    def drawRegionBackpackSlot14ItemType(self):
+        pointA = (self.backpackSlot14ItemTypeX1, self.backpackSlot14ItemTypeY1)
+        pointB = (pointA[0] + self.backpackSlot14ItemTypeW, pointA[1] + self.backpackSlot14ItemTypeH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot14AmmoAmount(self):
-        pointA = (self.backpackSlot14AmmoAmountX1, self.backpackSlot14AmmoAmountY1)
-        pointB = (pointA[0] + self.backpackSlot14AmmoAmountW, pointA[1] + self.backpackSlot14AmmoAmountH)
+    def drawRegionBackpackSlot14ItemAmount(self):
+        pointA = (self.backpackSlot14ItemAmountX1, self.backpackSlot14ItemAmountY1)
+        pointB = (pointA[0] + self.backpackSlot14ItemAmountW, pointA[1] + self.backpackSlot14ItemAmountH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
-    def drawRegionBackpackSlot14AmmoBars(self):
-        pointA = (self.backpackSlot14AmmoBarsX1, self.backpackSlot14AmmoBarsY1)
-        pointB = (pointA[0] + self.backpackSlot14AmmoBarsW, pointA[1] + self.backpackSlot14AmmoBarsH)
+    def drawRegionBackpackSlot14ItemBars(self):
+        pointA = (self.backpackSlot14ItemBarsX1, self.backpackSlot14ItemBarsY1)
+        pointB = (pointA[0] + self.backpackSlot14ItemBarsW, pointA[1] + self.backpackSlot14ItemBarsH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionBannerBoundingBox(self):
@@ -1039,6 +1071,11 @@ class InventoryProcessor:
     def drawRegionUsername(self):
         pointA = (self.usernameX1, self.usernameY1)
         pointB = (pointA[0] + self.usernameW, pointA[1] + self.usernameH)
+        cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
+
+    def drawRegionShieldBar(self):
+        pointA = (self.shieldBarX1, self.shieldBarY1)
+        pointB = (pointA[0] + self.shieldBarW, pointA[1] + self.shieldBarH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
     def drawRegionHealthBar(self):
@@ -1071,6 +1108,11 @@ class InventoryProcessor:
         pointB = (pointA[0] + self.abilityIconW, pointA[1] + self.abilityIconH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
 
+    def drawRegionAbilityPercentText(self):
+        pointA = (self.abilityPercentTextX1, self.abilityPercentTextY1)
+        pointB = (pointA[0] + self.abilityPercentTextW, pointA[1] + self.abilityPercentTextH)
+        cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
+
     def drawRegionBackButtonKeyBind(self):
         pointA = (self.backButtonKeyBindX1, self.backButtonKeyBindY1)
         pointB = (pointA[0] + self.backButtonKeyBindW, pointA[1] + self.backButtonKeyBindH)
@@ -1085,9 +1127,6 @@ class InventoryProcessor:
         pointA = (self.gameMenuTextX1, self.gameMenuTextY1)
         pointB = (pointA[0] + self.gameMenuTextW, pointA[1] + self.gameMenuTextH)
         cv2.rectangle(self.image, pointA, pointB, self.regionColor, self.regionThickness)
-
-    def getSimilarity(self, stringA, stringB):
-        return SequenceMatcher(None, stringA, stringB).ratio()
 
     def getTopMenuInventoryTextSimilarity(self):
         pointA = (self.topMenuInventoryTextX1, self.topMenuInventoryTextY1)
@@ -1163,9 +1202,9 @@ class InventoryProcessor:
         if(topMenuLegendTextSimilarity >= .80):
             confidenceLevel += 1
         if(weapon1TextSimilarity >= .80):
-            confidenceLevel += 1
+            confidenceLevel += 2
         if(weapon2TextSimilarity >= .80):
-            confidenceLevel += 1
+            confidenceLevel += 2
         if(backButtonTextSimilarity >= .80):
             confidenceLevel += 1
         if(gameMenuTextSimilarity >= .80):
@@ -1273,3 +1312,21 @@ class InventoryProcessor:
         isEmptyMaxValue = cv2.minMaxLoc(isEmptyResult)[1]
 
         return True if isLockedMaxValue > isEmptyMaxValue else False
+
+    def getHealthAmount(self):
+        pointA = (self.healthBarX1, self.healthBarY1)
+        pointB = (pointA[0] + self.healthBarW, pointA[1] + self.healthBarH)
+        healthBarImage = self.image[pointA[1]:pointB[1], pointA[0]:pointB[0]]
+        grayHealthBarImage = cv2.cvtColor(healthBarImage, cv2.COLOR_BGR2GRAY)
+        binaryHealthBarImage = cv2.threshold(grayHealthBarImage, 200, 255, cv2.THRESH_BINARY)[1]
+
+        # cv2.imwrite("../output/healthBar.jpg", healthBarImage)
+        # cv2.imwrite("../output/grayHealthBar.jpg", grayHealthBarImage)
+        # cv2.imwrite("../output/binaryHealthBar.jpg", binaryHealthBarImage)
+
+        count = 0
+        for x in range(0, 238):
+            if binaryHealthBarImage[8][x] == 255:
+                count += 1
+
+        return round(count/238, 2) * 100

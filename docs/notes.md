@@ -1,0 +1,137 @@
+# Scene sequences
+
+- Logos
+    - This application will not consider this scene relevant
+- Loading
+    - Use the region in the lower right hand corner to determine if the user is at this scene. This will most likely have to be accomplished using quite a few templates for template matching.
+        - `scenes/loadingCapture.JPG`
+- Continue prompt
+    - Use the few areas of text to determine if the user is at this scene.
+    - This scene is also the backgrop for error messages.
+        - `scenes/disconnectForInactivityCapture.JPG`
+- Loading
+    - See previous
+- Lobby
+    - Lots of areas of text and icons for determining if the user is at this scene.
+        - Top right icon
+        - Play
+        - Legends
+        - Armory
+        - Battle Pass
+        - Store
+        - crafting metal icon
+        - Legend token icon
+        - Apex coins icon
+        - Play apex/training
+        - Ready
+        - World icon
+        - Friends online icon
+        - Settings icon
+    - Additional data that can be scraped:
+        - level
+        - username
+        - mic enabled (via template matching)
+        - crafting metal count
+        - legend token count
+        - apex coins count
+        - selected gamemode (play apex/training)
+    - `scenes/lobbyCapture.JPG`
+- Loading
+    - See previous
+- Legend select
+    - Use the regions of text to determine if the user is at this scene.
+        - Bloodhound
+        - Gibrlatar
+        - Lifeline
+        - wraith
+        - bangalore
+        - pathfinder
+        - caustic
+        - mirage
+    - Additional data, like each of the three players usernames and their chosen legend can additionally be scraped from this scene
+    - `scenes/legendSelectCapture.JPG`
+- Your team overview
+- Champion team overview
+    - There's only a few places to scrape for text to determine if the user is at this scene.
+        - Placed
+        - Squad kills
+        - Return to lobby
+    - `scenes/championsOfTheArenaCapture.JPG`
+- Loading
+    - See previous
+- In game instance
+    - Drop ship
+        - //TODO
+    - Flying from drop ship
+        - `scenes/flyingFromDropShipCapture`
+    - Flying
+        - Similar to the flying from drop ship scene, but minus checking who is the jump master
+    - First Person
+    - Map
+    - Inventory
+    - Pause menu
+    - Ping wheel
+    - Ordnance wheel
+    - Using upwards rope
+        - Should be possible to detect rope as its position seems to be static when spining around it. This will require a fair bit of experimentation to detect
+    - "You are the apex champions" overlay
+- Match summary
+    - The following can be used to determine if the user is at this scene.
+        - Apex icon (template matching)
+        - Match summary
+        - Squad placed
+        - XP Breakdown
+        - Time survived
+        - Kills
+        - Damage done
+        - Revive Ally
+        - Respawn Ally
+        - Killed Champion
+        - Kill Leader
+        - Playing with Friends
+        - Total xp earned
+        - Next reward (may not always appear in the case for those with max level?)
+        - Season #
+        - Battle Pass Points
+        - Total Earned Match XP
+        - Playing with Friends
+        - Next reward (may not always appear in the case the user finished the pass)
+        - Close
+    - The following can be scraped from the scene:
+        - Squad placed
+        - Squad placed out of
+        - Time survived
+        - Time survived xp
+        - Kills
+        - Kills xp
+        - Damage done
+        - Damage done xp
+        - Revive Ally
+        - Revive Ally xp
+        - Killed Champion
+        - Killed Champion xp
+        - Kill leader
+        - Kill leader xp
+        - Playing with friends
+        - Playing with friends xp
+        - total xp earned
+        - current level
+        - current level xp
+        - next level
+        - next level xp
+        - total earned match xp (again)
+        - playing with friends
+        - playing with friends xp
+        - legend bonus (legendName: Legend Bonus) - may not always appear if the user has maxed the given legend
+        - total earned pass points
+        - current pass level
+        - current pass level xp
+        - next pass level
+        - next pass level xp
+
+---
+
+# Hierarchy
+
+- Each Video contains many Frames
+- Each frame has a singular frameType
