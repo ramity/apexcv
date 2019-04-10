@@ -19,7 +19,6 @@ class Frame:
     contourLayers = -1
     contourColor = (0, 0, 255)
     contourBorderSize = 1
-    floodFillMask
 
     def __init__(self, frameNumber, path, image):
         self.frameNumber = frameNumber
@@ -27,7 +26,6 @@ class Frame:
         self.image = image
         self.cols = image.shape[0]
         self.rows = image.shape[1]
-        self.floodFillMask = np.zeros((self.rows + 2, self.cols + 2), np.unit8)
 
     def getSubRegion(self, x, y, w, h):
         x1 = x
@@ -105,6 +103,3 @@ class Frame:
             return self.getSubRegion(x, y, w, h)
         else:
             return cv2.drawContours(self.getSubRegion(x, y, w, h), contours, self.contourLayers, self.contourColor, self.contourBorderSize)
-
-    def floodFill(self, x, y):
-        return cv2.floodFill(self.getGrayscale(), self.floodFillMask, (x, y), self.floodFillColor)

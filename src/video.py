@@ -3,7 +3,7 @@ from frame import Frame
 
 class Video:
 
-    path = ""
+    videoPath = ""
     framesDirectory = "/var/src/output/frames"
     video
     frameCount = 0
@@ -11,9 +11,9 @@ class Video:
     rows = 0
     frames = {}
 
-    def __init__(self, path, slowInport=false):
-        self.path = path
-        self.video = cv2.VideoCapture(path)
+    def __init__(self, videoPath, slowInport=false):
+        self.videoPath = videoPath
+        self.video = cv2.VideoCapture(videoPath)
         self.frameCount = int(self.video.get(cv2.CAP_PROP_FRAME_COUNT))
         self.cols = int(self.video.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH))
         self.rows = int(self.video.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT))
