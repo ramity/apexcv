@@ -1,0 +1,283 @@
+{
+  "topMenuInventoryText":
+  {
+    "x1": 704,
+    "w": 123,
+    "y1": 37,
+    "h": 26,
+    "text": [
+      "inventory"
+    ],
+    "requiredTextSimilarity": 0.8,
+    "stateDeterminingWeight": 1
+  },
+  "topMenuSquadText":
+  {
+    "x1": 930,
+    "w": 77,
+    "y1": 37,
+    "h": 26,
+    "text": [
+      "squad"
+    ],
+    "requiredTextSimilarity": 0.8,
+    "stateDeterminingWeight": 1
+  },
+  "topMenuLengendText":
+  {
+    "x1": 930,
+    "w": 88,
+    "y1": 37,
+    "h": 26,
+    "text": [
+      "legend"
+    ],
+    "requiredTextSimilarity": 0.8,
+    "stateDeterminingWeight": 1
+  },
+  "weapon1BoundingBox":
+  {
+    "x1": 410,
+    "w": 510,
+    "y1": 150,
+    "h": 310
+  },
+  "weapon1KeyBindIcon":
+  {
+    "x1": 424,
+    "w": 25,
+    "y1": 155,
+    "h": 25
+  },
+  "weapon1Text":
+  {
+    "x1": 451,
+    "w": 88,
+    "y1": 156,
+    "h": 21
+  },
+  "weapon1WeaponIcon":
+  {
+    "x1": 536,
+    "w": 309,
+    "y1": 200,
+    "h": 100
+  },
+  "weapon1WeaponName":
+  {
+    "x1": 419,
+    "w": 299,
+    "y1": 315,
+    "h": 24
+  },
+  "weaon1SkinName":
+  {
+    "x1": 419,
+    "w": 152,
+    "y1": 342,
+    "h": 19
+  },
+  "weapon1ModSlot1":
+  {
+    "x1": 418,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon1ModSlot2":
+  {
+    "x1": 497,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon1ModSlot3":
+  {
+    "x1": 576,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon1ModSlot4":
+  {
+    "x1": 655,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon1ModSlot5":
+  {
+    "x1": 734,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon1CurrentMagizineCount":
+  {
+    "x1": 848,
+    "w": 46,
+    "y1": 334,
+    "h": 34
+  },
+  "weapon1AmmotTypeIcon":
+  {
+    "x1": 833,
+    "w": 76,
+    "y1": 376,
+    "h": 73
+  },
+  "weapon2BoundingBox":
+  {
+    "x1": 1000,
+    "w": 510,
+    "y1": 150,
+    "h": 310
+  },
+  "weapon2KeyBindIcon":
+  {
+    "x1": 1014,
+    "w": 25,
+    "y1": 155,
+    "h": 25
+  },
+  "weapon2Text":
+  {
+    "x1": 1041,
+    "w": 88,
+    "y1": 156,
+    "h": 21
+  },
+  "weapon2WeaponIcon":
+  {
+    "x1": 1126,
+    "w": 309,
+    "y1": 200,
+    "h": 100
+  },
+  "weapon2WeaponName":
+  {
+    "x1": 1009,
+    "w": 299,
+    "y1": 315,
+    "h": 24
+  },
+  "weapon2SkinName":
+  {
+    "x1": 1009,
+    "w": 152,
+    "y1": 342,
+    "h": 19
+  },
+  "weapon2ModSlot1":
+  {
+    "x1": 1008,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon2ModSlot2":
+  {
+    "x1": 1087,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon2ModSlot3":
+  {
+    "x1": 1166,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon2ModSlot4":
+  {
+    "x1": 1245,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon2ModSlot5":
+  {
+    "x1": 1324,
+    "w": 75,
+    "y1": 377,
+    "h": 75
+  },
+  "weapon2CurrentMagizineCount":
+  {
+    "x1": 1438,
+    "w": 46,
+    "y1": 334,
+    "h": 34
+  },
+  "weapon2AmmotTypeIcon":
+  {
+    "x1": 1423,
+    "w": 76,
+    "y1": 376,
+    "h": 73
+  },
+  "backpackSlot1":
+  {
+    "x1": 614,
+    "w": 92,
+    "y1": 590,
+    "h": 92
+  },
+  "backpackSlotItemType":
+  {
+    "x1": 614,
+    "w": 92,
+    "y1": 590,
+    "h": 58
+  },
+  "backpackSlot1ItemAmmount":
+  {
+    "x1": 674,
+    "w": 28,
+    "y1": 647,
+    "h": 20
+  },
+  "backpackSlot1ItemBars":
+  {
+    "x1": 619,
+    "w": 81,
+    "y1": 671,
+    "h": 5
+  },
+  "backpackSlot2":
+  {
+    "x1": 714,
+    "w": 92,
+    "y1": 590,
+    "h": 92
+  },
+  "backpackSlot2ItemType":
+  {
+    "x1": 714,
+    "w": 92,
+    "y1": 590,
+    "h": 58
+  },
+  "backpackSlot2ItemAmount":
+  {
+    "x1": 774,
+    "w": 28,
+    "y1": 647,
+    "h": 20
+  },
+  "backpackSlot2ItemBars":
+  {
+    "x1": 719,
+    "w": 81,
+    "y1": 671,
+    "h": 5
+  },
+  "backpackSlot3":
+  {
+    "x1": 814,
+    "w": 92,
+    "y1": 590,
+    "h": 92
+  }
+}
