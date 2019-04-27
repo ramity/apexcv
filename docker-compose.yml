@@ -6,4 +6,33 @@ services:
       context: ./docker/python
       dockerfile: Dockerfile
     volumes:
-      - ./src:/var/src
+      - ./python:/var/src
+  symfony:
+    container_name: apexcv_apache
+    build:
+      context: ./docker/apache
+      dockerfile: Dockerfile
+    volumes:
+      - ./symfony:/var/www/symfony
+    ports:
+      - 80:80
+  mysql:
+    container_name: apexcv_mysql
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    env_file:
+      - ./.env
+  phpmyadmin:
+    container_name: apexcv_phpmyadmin
+    build:
+      context: ./docker/phpmyadmin
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    env_file:
+      - ./.env
